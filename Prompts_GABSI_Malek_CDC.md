@@ -14,7 +14,7 @@ Agis en tant qu'architecte d'interopérabilité en santé, expert HL7 v2, FHIR e
 
 &nbsp;
 
-\#\# CONTEXTE
+#\# CONTEXTE
 
 &nbsp;
 
@@ -70,7 +70,7 @@ Nous sommes encore en phase de \*\*cahier des charges\*\*. Il ne faut pas dével
 
 &nbsp;
 
-\#\# OBJECTIF
+#\# OBJECTIF
 
 &nbsp;
 
@@ -78,11 +78,11 @@ Produire une spécification technique qui permettra ensuite d'implémenter le pr
 
 &nbsp;
 
-\#\# TRAVAIL DEMANDÉ
+#\# TRAVAIL DEMANDÉ
 
 &nbsp;
 
-\#\#\# 1\. Architecture fonctionnelle et technique
+#\#\# 1\. Architecture fonctionnelle et technique
 
 &nbsp;
 
@@ -116,7 +116,7 @@ Indique le sens des flux.
 
 &nbsp;
 
-\#\#\# 2\. Analyse ReEIF — Infrastructure et Application
+#\#\# 2\. Analyse ReEIF — Infrastructure et Application
 
 &nbsp;
 
@@ -124,7 +124,7 @@ Analyse principalement :
 
 &nbsp;
 
-\#\#\#\# Infrastructure
+#\#\#\# Infrastructure
 
 \- connectivité ;
 
@@ -142,7 +142,7 @@ Analyse principalement :
 
 &nbsp;
 
-\#\#\#\# Application
+#\#\#\# Application
 
 \- API REST/FHIR côté source ;
 
@@ -162,7 +162,7 @@ Fais aussi le lien avec les autres couches ReEIF lorsqu'une décision technique 
 
 &nbsp;
 
-\#\#\# 3\. Choix de la version HL7 v2
+#\#\# 3\. Choix de la version HL7 v2
 
 &nbsp;
 
@@ -180,7 +180,7 @@ Ne choisis pas arbitrairement :
 
 &nbsp;
 
-\#\#\# 4\. Choix du message de rendez-vous
+#\#\# 4\. Choix du message de rendez-vous
 
 &nbsp;
 
@@ -222,7 +222,7 @@ Lorsque le scénario du prototype nécessite une hypothèse, formule-la explicit
 
 &nbsp;
 
-\#\#\# 5\. Structure du message HL7 v2
+#\#\# 5\. Structure du message HL7 v2
 
 &nbsp;
 
@@ -264,7 +264,7 @@ N'ajoute pas un segment uniquement pour « faire plus complet ».
 
 &nbsp;
 
-\#\#\# 6\. Mapping FHIR → HL7 v2
+#\#\# 6\. Mapping FHIR → HL7 v2
 
 &nbsp;
 
@@ -312,7 +312,7 @@ Ne fabrique jamais un numéro de champ de mémoire si tu n'es pas certain.
 
 &nbsp;
 
-\#\#\# 7\. Alignement terminologique
+#\#\# 7\. Alignement terminologique
 
 &nbsp;
 
@@ -350,7 +350,7 @@ Exemple typique à analyser : valeurs administratives ou statuts.
 
 &nbsp;
 
-\#\#\# 8\. Transformation des dates et identifiants
+#\#\# 8\. Transformation des dates et identifiants
 
 &nbsp;
 
@@ -374,7 +374,7 @@ Aucune information ne doit être inventée pour remplir un champ HL7.
 
 &nbsp;
 
-\#\#\# 9\. Gestion des erreurs
+#\#\# 9\. Gestion des erreurs
 
 &nbsp;
 
@@ -408,7 +408,7 @@ Pour chaque catégorie :
 
 &nbsp;
 
-\#\#\# 10\. Traçabilité
+#\#\# 10\. Traçabilité
 
 &nbsp;
 
@@ -436,7 +436,7 @@ Veille toutefois au principe de minimisation des données de santé dans les jou
 
 &nbsp;
 
-\#\#\# 11\. Limites et pertes d'information
+#\#\# 11\. Limites et pertes d'information
 
 &nbsp;
 
@@ -474,7 +474,7 @@ Pour chaque perte potentielle, choisir parmi :
 
 &nbsp;
 
-\#\#\# 12\. Règles générales de transformation
+#\#\# 12\. Règles générales de transformation
 
 &nbsp;
 
@@ -496,7 +496,7 @@ Ces règles constitueront le contrat utilisé pendant le développement.
 
 &nbsp;
 
-\#\# SOURCES ET VÉRIFICATION
+#\# SOURCES ET VÉRIFICATION
 
 &nbsp;
 
@@ -526,7 +526,7 @@ Pour les segments et champs HL7 v2 :
 
 &nbsp;
 
-\#\# CONTRAINTES
+#\# CONTRAINTES
 
 &nbsp;
 
@@ -554,7 +554,7 @@ Pour les segments et champs HL7 v2 :
 
 &nbsp;
 
-\#\# FORMAT DE SORTIE
+#\# FORMAT DE SORTIE
 
 &nbsp;
 
@@ -681,10 +681,10 @@ Le prototype dépend d’un serveur FHIR distant. Toute indisponibilité réseau
 
 Le service d’accès doit différencier :
 
-* serveur inaccessible ;  
-* timeout ;  
-* erreur HTTP ;  
-* réponse FHIR valide mais vide ;  
+* serveur inaccessible ;
+* timeout ;
+* erreur HTTP ;
+* réponse FHIR valide mais vide ;
 * réponse FHIR en erreur.
 
 ### **HTTPS / TLS**
@@ -701,8 +701,8 @@ Le serveur public HAPI utilisé pour la démonstration ne représente pas un sys
 
 Si un futur serveur impose un token ou des identifiants :
 
-* aucun secret ne doit être inscrit en dur dans le dépôt Git ;  
-* aucun token ne doit apparaître dans les journaux ;  
+* aucun secret ne doit être inscrit en dur dans le dépôt Git ;
+* aucun token ne doit apparaître dans les journaux ;
 * la configuration doit être externalisée.
 
 ### **Disponibilité**
@@ -725,21 +725,21 @@ La journalisation doit permettre de diagnostiquer un échange sans recopier inut
 
 À tracer de préférence :
 
-* horodatage ;  
-* type d’opération ;  
-* ressource concernée ;  
-* identifiant technique ;  
-* code HTTP ;  
-* résultat ;  
-* warnings ;  
+* horodatage ;
+* type d’opération ;
+* ressource concernée ;
+* identifiant technique ;
+* code HTTP ;
+* résultat ;
+* warnings ;
 * identifiant de corrélation.
 
 À éviter par défaut :
 
-* nom complet ;  
-* date de naissance ;  
-* adresse ;  
-* texte clinique ;  
+* nom complet ;
+* date de naissance ;
+* adresse ;
+* texte clinique ;
 * contenu intégral des ressources.
 
 ---
@@ -748,7 +748,7 @@ La journalisation doit permettre de diagnostiquer un échange sans recopier inut
 
 La source utilise le paradigme :
 
-REST \+ ressources FHIR
+REST + ressources FHIR
 
 alors que la cible HL7 v2 utilise un paradigme :
 
@@ -782,8 +782,8 @@ HL7 v2
 
 Cela évite de confondre :
 
-* modèle source ;  
-* modèle métier ;  
+* modèle source ;
+* modèle métier ;
 * modèle cible.
 
 ### **Impact sur les autres dimensions ReEIF**
@@ -806,9 +806,9 @@ Je retiens donc comme **version candidate du prototype : HL7 v2.5.1**.
 
 Cette version est adaptée car :
 
-* elle définit la famille SIU pour le scheduling ;  
-* elle possède une structure `SIU_S12` documentée ;  
-* elle définit les segments `SCH`, `AIS`, `AIP`, `AIL`, etc. nécessaires au scénario ;  
+* elle définit la famille SIU pour le scheduling ;
+* elle possède une structure `SIU_S12` documentée ;
+* elle définit les segments `SCH`, `AIS`, `AIP`, `AIL`, etc. nécessaires au scénario ;
 * elle est suffisamment mature pour un exercice d’intégration.
 
 HL7 v2.5.1 est une version finalisée du standard et documente la structure `SIU_S12`.
@@ -837,7 +837,7 @@ S12
 
 &nbsp;
 
-SIU\_S12
+SIU_S12
 
 \= structure de message
 
@@ -888,8 +888,8 @@ Appointment.status \= booked
 
 ne permet pas de savoir si :
 
-* le rendez-vous vient d’être créé ;  
-* il vient d’être modifié ;  
+* le rendez-vous vient d’être créé ;
+* il vient d’être modifié ;
 * il a été replanifié auparavant.
 
 De même :
@@ -918,23 +918,23 @@ MSH
 
 SCH
 
-\[ TQ1 \]
+[ TQ1 ]
 
-\[ NTE \]
+[ NTE ]
 
-\[ PATIENT
+[ PATIENT
 
 &nbsp;&nbsp;&nbsp;&nbsp;PID
 
-&nbsp;&nbsp;&nbsp;&nbsp;\[PD1\]
+&nbsp;&nbsp;&nbsp;&nbsp;[PD1]
 
-&nbsp;&nbsp;&nbsp;&nbsp;\[PV1\]
+&nbsp;&nbsp;&nbsp;&nbsp;[PV1]
 
-&nbsp;&nbsp;&nbsp;&nbsp;\[PV2\]
+&nbsp;&nbsp;&nbsp;&nbsp;[PV2]
 
 &nbsp;&nbsp;&nbsp;&nbsp;...
 
-\]
+]
 
 {
 
@@ -942,31 +942,31 @@ SCH
 
 &nbsp;&nbsp;&nbsp;&nbsp;RGS
 
-&nbsp;&nbsp;&nbsp;&nbsp;\[ SERVICE
+&nbsp;&nbsp;&nbsp;&nbsp;[ SERVICE
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AIS
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\[NTE\]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[NTE]
 
-&nbsp;&nbsp;&nbsp;&nbsp;\]
+&nbsp;&nbsp;&nbsp;&nbsp;]
 
-&nbsp;&nbsp;&nbsp;&nbsp;\[ GENERAL\_RESOURCE
+&nbsp;&nbsp;&nbsp;&nbsp;[ GENERAL_RESOURCE
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AIG
 
-&nbsp;&nbsp;&nbsp;&nbsp;\]
+&nbsp;&nbsp;&nbsp;&nbsp;]
 
-&nbsp;&nbsp;&nbsp;&nbsp;\[ LOCATION\_RESOURCE
+&nbsp;&nbsp;&nbsp;&nbsp;[ LOCATION_RESOURCE
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AIL
 
-&nbsp;&nbsp;&nbsp;&nbsp;\]
+&nbsp;&nbsp;&nbsp;&nbsp;]
 
-&nbsp;&nbsp;&nbsp;&nbsp;\[ PERSONNEL\_RESOURCE
+&nbsp;&nbsp;&nbsp;&nbsp;[ PERSONNEL_RESOURCE
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AIP
 
-&nbsp;&nbsp;&nbsp;&nbsp;\]
+&nbsp;&nbsp;&nbsp;&nbsp;]
 
 }
 
@@ -980,11 +980,11 @@ PID
 
 RGS
 
-\[AIS\]
+[AIS]
 
-\[AIP\]
+[AIP]
 
-\[AIL\]
+[AIL]
 
 `PV1` n’est pas retenu par défaut car notre sujet traite du rendez-vous, pas d’une visite/Encounter existante.
 
@@ -1018,13 +1018,13 @@ Le mapping ci-dessous est limité aux champs dont la sémantique a été vérifi
 | Identifiant RDV | `Appointment.identifier` | Identifier → EI | `SCH-1` ou `SCH-2` selon rôle placer/filler | Le rôle doit être défini localement | Ambiguïté placer/filler |
 | Motif RDV | `Appointment.reasonCode` | CodeableConcept → CE | `SCH-7 Appointment Reason` | seulement si mapping pertinent | Multiples codings possibles |
 | Type RDV | `Appointment.appointmentType` | CodeableConcept → CE | `SCH-8 Appointment Type` | ne pas utiliser serviceType ici | Réduction possible |
-| Durée | `Appointment.minutesDuration` ou calcul start/end | numérique \+ unité | `SCH-9/10` ou durée sur segments ressource | SCH-9/10 sont backward-compatibility en 2.5.1 ; usage local à décider | Risque de redondance |
+| Durée | `Appointment.minutesDuration` ou calcul start/end | numérique + unité | `SCH-9/10` ou durée sur segments ressource | SCH-9/10 sont backward-compatibility en 2.5.1 ; usage local à décider | Risque de redondance |
 | Service | `Appointment.serviceType` | CodeableConcept → CE | `AIS-3 Universal Service Identifier` | mapping seulement si serviceType représente bien le service cible | Terminologie source différente |
 | Début service | `Appointment.start` | instant → TS | `AIS-4` | si AIS utilisé | Même date répétée dans plusieurs segments |
-| Durée service | durée | nombre \+ unité | `AIS-7` / `AIS-8` | si connue | approximation possible |
+| Durée service | durée | nombre + unité | `AIS-7` / `AIS-8` | si connue | approximation possible |
 | Professionnel | Practitioner / PractitionerRole | normalisation identité → XCN | `AIP-3 Personnel Resource ID` | seulement si acteur professionnel résolu | perte d’informations PractitionerRole |
 | Début personnel | Appointment.start | instant → TS | `AIP-6` | si AIP utilisé | redondance |
-| Durée personnel | durée | NM \+ CE | `AIP-9/10` | si connue | approximation |
+| Durée personnel | durée | NM + CE | `AIP-9/10` | si connue | approximation |
 | Lieu | Location | mapping vers PL | `AIL-3 Location Resource ID` | seulement si Location résolue | structure Location plus riche |
 | Début lieu | Appointment.start | instant → TS | `AIL-6` | si segment utilisé | redondance |
 | Statut global | `Appointment.status` | **pas de copie directe automatique** | éventuellement `SCH-25 Filler Status Code` | mapping local à définir explicitement | forte différence sémantique |
@@ -1139,11 +1139,11 @@ Une représentation peut prendre une forme telle que :
 
 Règles :
 
-* préserver le fuseau lorsque disponible ;  
-* conserver la précision source ;  
-* ne pas inventer secondes ou heure si elles n’existent pas ;  
-* vérifier `start <= end` ;  
-* calculer la durée à partir de start/end uniquement s’ils sont présents et cohérents ;  
+* préserver le fuseau lorsque disponible ;
+* conserver la précision source ;
+* ne pas inventer secondes ou heure si elles n’existent pas ;
+* vérifier `start <= end` ;
+* calculer la durée à partir de start/end uniquement s’ils sont présents et cohérents ;
 * préférer `minutesDuration` si la politique locale le prévoit, tout en sachant que FHIR précise qu’il peut différer de l’intervalle start/end.
 
 ## **Identifiants**
@@ -1191,7 +1191,7 @@ Trois résultats généraux sont recommandés :
 
 SUCCESS
 
-SUCCESS\_WITH\_WARNINGS
+SUCCESS_WITH_WARNINGS
 
 FAILED
 
@@ -1230,9 +1230,9 @@ FHIR permet plusieurs participants de différents types dans `Appointment.partic
 
 Ils doivent être répartis entre différents segments :
 
-* personnel → AIP ;  
-* lieu → AIL ;  
-* service → AIS ;  
+* personnel → AIP ;
+* lieu → AIL ;
+* service → AIS ;
 * autres participants → pas forcément représentables dans notre profil.
 
 **Stratégie : mapping selon le type ; warning pour type non supporté.**
