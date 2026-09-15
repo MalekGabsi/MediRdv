@@ -1,0 +1,1402 @@
+
+Prompt1:
+
+
+Prompt individuel 1 — Membre 1
+Cadrage métier, fonctionnel et critères d'acceptation
+
+# Prompt — Partie 1 : Cadrage métier et fonctionnel du cahier des charges
+
+Agis en tant qu'expert en systèmes d'information de santé, analyse fonctionnelle et interopérabilité en santé.
+
+## CONTEXTE DU PROJET
+
+Nous travaillons en groupe de trois étudiants dans le cadre d'un module universitaire consacré à l'urbanisation et à l'interopérabilité des systèmes d'information de santé.
+
+Notre sujet est :
+
+**« Rendez-vous / calendrier d'un patient »**
+
+Nous devons concevoir puis développer un prototype qui sera connecté à un serveur FHIR et qui devra exploiter des données réelles concernant les rendez-vous d'un patient.
+
+Une seconde partie du projet devra permettre une transformation des informations récupérées depuis FHIR vers un format cible HL7 v2.
+
+Le travail actuel concerne exclusivement la **phase de conception et la rédaction du cahier des charges**. Ne développe pas encore l'application et ne fournis pas de code.
+
+Je suis le membre du groupe responsable du **cadrage métier et fonctionnel**.
+
+## OBJECTIF
+
+Produire la première partie du cahier des charges qui permettra ensuite aux deux autres membres du groupe de spécifier les données FHIR et l'architecture d'intégration.
+
+Cette partie doit répondre avant tout aux questions :
+
+- Pourquoi cette application est-elle nécessaire ?
+- Quel problème métier cherche-t-elle à résoudre ?
+- Qui utilise l'application ?
+- Dans quel contexte ?
+- Quelles actions principales l'utilisateur doit-il pouvoir réaliser ?
+- Quelles données métier sont nécessaires ?
+- Comment vérifier objectivement que le prototype répond au besoin ?
+
+## TRAVAIL DEMANDÉ
+
+Construis cette partie du cahier des charges avec les sections suivantes.
+
+### 1. Contexte et problématique métier
+
+Présente le contexte d'un système d'information de santé dans lequel les données de rendez-vous peuvent provenir d'un système d'agenda ou d'un autre composant du SI.
+
+Explique le problème que cherche à résoudre le prototype, sans entrer à ce stade dans les détails techniques de FHIR ou de HL7 v2.
+
+Fais clairement la distinction entre :
+- problème métier ;
+- besoin utilisateur ;
+- solution informatique envisagée.
+
+### 2. Objectifs du prototype
+
+Définis :
+- un objectif général ;
+- plusieurs objectifs fonctionnels précis ;
+- ce qui est explicitement hors périmètre.
+
+Les objectifs doivent être suffisamment précis pour guider ensuite le développement.
+
+### 3. Identification des acteurs
+
+Identifie les acteurs pertinents du cas d'usage.
+
+Pour chaque acteur, indique :
+- son rôle ;
+- ses besoins ;
+- ses interactions avec le prototype ;
+- son niveau de responsabilité.
+
+Ne crée pas inutilement des acteurs qui ne participent pas au scénario.
+
+### 4. Scénario métier nominal
+
+Construis un scénario principal détaillé et numéroté.
+
+Le scénario doit commencer par l'accès de l'utilisateur au prototype et aller jusqu'à la consultation détaillée d'un rendez-vous.
+
+Prévois notamment :
+- identification ou sélection du patient ;
+- consultation de ses rendez-vous ;
+- sélection d'un rendez-vous ;
+- visualisation des informations pertinentes.
+
+Reste au niveau métier : ne détaille pas encore les endpoints REST ou les segments HL7.
+
+### 5. Scénarios alternatifs et cas d'erreur fonctionnels
+
+Identifie quelques situations telles que :
+- patient introuvable ;
+- aucun rendez-vous ;
+- rendez-vous incomplet ;
+- professionnel ou lieu non disponible ;
+- données indisponibles.
+
+Décris le comportement attendu du prototype du point de vue de l'utilisateur.
+
+### 6. Exigences fonctionnelles
+
+Produis une liste numérotée d'exigences sous la forme :
+
+**EF-01 — [nom] :** description vérifiable.
+
+Classe-les si pertinent en :
+- consultation patient ;
+- consultation agenda ;
+- détail rendez-vous ;
+- affichage ;
+- gestion fonctionnelle des anomalies.
+
+Chaque exigence doit être testable et non ambiguë.
+
+### 7. Exigences non fonctionnelles pertinentes
+
+Propose uniquement celles qui sont utiles au prototype :
+- simplicité d'utilisation ;
+- lisibilité ;
+- confidentialité ;
+- traçabilité ;
+- robustesse ;
+- temps de réponse raisonnable.
+
+Ne fixe pas de chiffres arbitraires si l'énoncé n'en fournit pas. Lorsqu'une valeur devrait être décidée par le groupe, indique-la comme « à valider ».
+
+### 8. Critères d'acceptation
+
+Transforme les principales exigences en critères d'acceptation vérifiables.
+
+Présente-les dans un tableau :
+
+| ID | Critère | Méthode de vérification | Résultat attendu |
+
+Les critères doivent permettre, à la fin du développement, de décider objectivement si le prototype satisfait ou non le cahier des charges.
+
+### 9. Analyse ReEIF — dimensions métier, organisation et juridique
+
+Sans traiter en détail les dimensions techniques réservées aux autres membres, analyse le projet selon :
+
+- **Métier / processus de soin** :
+  quand l'information de rendez-vous est-elle utile ?
+  qui l'utilise ?
+  que se passe-t-il si elle est fausse, absente ou en retard ?
+
+- **Organisation / gouvernance** :
+  qui produit l'information ?
+  qui la consulte ?
+  qui serait responsable d'une correction ou d'une anomalie dans un système réel ?
+
+- **Juridique / réglementaire** :
+  quelles précautions générales faut-il envisager pour la manipulation de données concernant des patients ?
+
+Ne transforme pas cette section en consultation juridique. Reste au niveau d'un cahier des charges académique.
+
+## CONTRAINTES DE RÉDACTION
+
+- Écris en français.
+- Style professionnel, clair et directement réutilisable dans un cahier des charges.
+- N'invente pas de contexte hospitalier précis non fourni.
+- Toute hypothèse nécessaire doit être marquée explicitement comme **Hypothèse**.
+- Ne choisis pas encore les ressources FHIR détaillées, profils FHIR, ValueSets ou segments HL7 v2 : ces sujets seront traités dans les parties 2 et 3.
+- Évite le remplissage théorique sans lien avec notre cas d'usage.
+- Chaque exigence doit servir concrètement la future réalisation du prototype.
+
+## MÉTHODE DE RAISONNEMENT ATTENDUE
+
+Avant de rédiger :
+1. identifie les informations certaines ;
+2. distingue les informations imposées des hypothèses ;
+3. vérifie que scénario, exigences et critères d'acceptation sont cohérents ;
+4. vérifie qu'aucun critère d'acceptation ne porte sur une fonctionnalité absente des exigences.
+
+## FORMAT DE SORTIE
+
+Retourne exactement :
+
+1. Contexte et problématique
+2. Objectifs et périmètre
+3. Acteurs
+4. Scénario nominal
+5. Scénarios alternatifs
+6. Exigences fonctionnelles
+7. Exigences non fonctionnelles
+8. Critères d'acceptation
+9. Analyse ReEIF : métier / organisation / juridique
+10. Hypothèses et points à confirmer avec le groupe
+Résultat prompt1:
+
+1. Contexte et problématique
+Le projet porte sur la conception d’un prototype permettant de consulter les rendez-vous associés à un patient au sein d’un système d’information de santé.
+Dans un SI de santé, l’information relative aux rendez-vous peut être produite par un système d’agenda, un outil de planification, un logiciel métier ou un autre composant applicatif. Cette information doit ensuite pouvoir être consultée par des utilisateurs autorisés dans le cadre de leur activité.
+Le problème posé n’est donc pas uniquement celui de l’affichage d’un agenda. Il concerne d’abord la capacité à retrouver, présenter et exploiter de manière cohérente l’information de rendez-vous d’un patient, alors que cette information peut être produite et stockée dans un autre composant du système d’information.
+Problème métier
+Un utilisateur ayant besoin de connaître les rendez-vous d’un patient doit pouvoir accéder simplement à une information fiable lui permettant notamment de savoir :
+quels rendez-vous sont associés au patient ;
+à quelle date et à quelle heure ils sont prévus ;
+quel est leur statut ;
+quel professionnel, service ou lieu est concerné lorsque ces informations sont disponibles.
+Une information de rendez-vous absente, incomplète ou erronée peut provoquer des difficultés organisationnelles : mauvaise orientation du patient, rendez-vous manqué, mauvaise préparation de la prise en charge ou perte de temps pour les professionnels.
+Besoin utilisateur
+L’utilisateur a besoin d’un moyen simple permettant :
+d’identifier un patient ;
+d’accéder aux rendez-vous qui lui sont associés ;
+de consulter une vue synthétique de son agenda ;
+d’accéder au détail d’un rendez-vous ;
+d’être informé lorsque certaines données sont indisponibles ou incomplètes.
+Solution informatique envisagée
+Le prototype envisagé est une application permettant de consulter les informations de rendez-vous disponibles dans le système d’information et de les présenter sous une forme compréhensible pour l’utilisateur.
+À ce stade du cahier des charges, le choix des standards d’échange, des ressources techniques et du mécanisme de transformation vers le système cible n’est pas détaillé. Ces choix seront spécifiés dans les parties consacrées à l’interopérabilité et à l’architecture.
+Hypothèse : le prototype est un outil de consultation destiné à un utilisateur autorisé dans un contexte de santé. Il n’est pas considéré, dans le périmètre minimal, comme le système maître responsable de la création et de la maintenance des rendez-vous.
+
+2. Objectifs et périmètre
+Objectif général
+L’objectif général du prototype est de permettre à un utilisateur autorisé de retrouver un patient et de consulter de manière claire les rendez-vous qui lui sont associés, à partir des données mises à disposition par le système d’information.
+Le résultat doit être suffisamment structuré pour pouvoir être utilisé dans les étapes ultérieures du projet, notamment pour l’interopérabilité et la transformation des informations.
+Objectifs fonctionnels
+Le prototype devra permettre de :
+identifier ou sélectionner un patient ;
+afficher les rendez-vous disponibles pour ce patient ;
+distinguer clairement les différents rendez-vous ;
+présenter les principales informations utiles concernant chaque rendez-vous ;
+permettre la sélection d’un rendez-vous ;
+afficher le détail du rendez-vous sélectionné ;
+indiquer clairement lorsqu’une information attendue n’est pas disponible ;
+empêcher qu’une absence de donnée soit présentée comme une information certaine ;
+fournir une expérience de consultation suffisamment simple pour permettre une démonstration du scénario métier.
+Périmètre fonctionnel retenu
+Le périmètre couvre :
+la consultation d’un patient ;
+la consultation de ses rendez-vous ;
+l’affichage synthétique des rendez-vous ;
+la consultation détaillée d’un rendez-vous ;
+la gestion fonctionnelle des cas où certaines informations sont absentes.
+Hors périmètre
+Sauf décision ultérieure du groupe, les fonctionnalités suivantes ne font pas partie du périmètre minimal :
+création d’un nouveau rendez-vous ;
+modification d’un rendez-vous ;
+annulation d’un rendez-vous ;
+gestion complète d’un agenda de professionnel ;
+recherche de créneaux disponibles ;
+détection automatique des conflits d’agenda ;
+gestion des rappels par SMS ou e-mail ;
+prise de rendez-vous directement par le patient ;
+authentification complète d’un système de production ;
+facturation ;
+gestion du dossier médical du patient ;
+synchronisation bidirectionnelle entre plusieurs agendas.
+Hypothèse : le prototype est principalement un prototype de consultation, l’objectif pédagogique principal étant ensuite de démontrer l’interopérabilité des données consultées.
+
+3. Acteurs
+Les acteurs sont volontairement limités à ceux qui participent directement au cas d’usage.
+ActeurRôleBesoinInteraction avec le prototypeResponsabilité
+
+
+
+
+
+
+
+
+Utilisateur autorisé
+Utilisateur principal du prototype
+Retrouver un patient et consulter ses rendez-vous
+Recherche ou sélection du patient, consultation de l’agenda, consultation du détail
+Vérifier qu’il consulte le bon patient et interpréter les informations affichées
+Patient
+Personne concernée par les rendez-vous
+Disposer indirectement d’une information correcte concernant ses rendez-vous
+Pas nécessairement d’interaction directe dans le prototype
+Aucun rôle opérationnel dans le prototype retenu
+Système source des rendez-vous
+Produit ou expose l’information utilisée par l’application
+Mettre à disposition les données utiles
+Fournit les informations exploitées par le prototype
+Dans un système réel, responsabilité sur la qualité des données qu’il produit ou détient
+
+Utilisateur principal
+L’utilisateur principal peut correspondre, selon le contexte réel d’utilisation, à un professionnel de santé, un agent administratif ou un autre utilisateur habilité.
+Le cahier des charges ne fixe pas une profession précise afin de ne pas inventer un contexte organisationnel absent de l’énoncé.
+Hypothèse : l’utilisateur dispose d’une légitimité fonctionnelle et des droits nécessaires pour consulter les données du patient.
+
+4. Scénario nominal
+Le scénario nominal décrit le fonctionnement attendu lorsque les informations nécessaires sont disponibles.
+L’utilisateur accède au prototype.
+Le prototype présente un moyen d’identifier ou de sélectionner un patient.
+L’utilisateur saisit ou choisit les informations nécessaires pour retrouver le patient concerné.
+Le prototype présente le patient correspondant de manière suffisamment claire pour éviter une confusion avec un autre patient.
+L’utilisateur sélectionne le patient.
+Le prototype recherche les rendez-vous associés au patient sélectionné.
+Le prototype affiche les rendez-vous disponibles dans une vue synthétique.
+Pour chaque rendez-vous, le prototype affiche au minimum les informations nécessaires pour permettre à l’utilisateur de le distinguer des autres, notamment :
+date ;
+heure ou plage horaire si disponible ;
+statut ;
+libellé, motif ou type lorsqu’une telle information est disponible.
+Lorsque des informations complémentaires sont disponibles, le prototype peut également afficher :
+professionnel associé ;
+service concerné ;
+lieu du rendez-vous.
+L’utilisateur sélectionne l’un des rendez-vous affichés.
+Le prototype affiche une vue détaillée du rendez-vous.
+Cette vue présente de manière structurée les informations disponibles concernant :
+le patient ;
+le rendez-vous ;
+la date et l’horaire ;
+le statut ;
+le professionnel, le service ou le lieu lorsque ces données existent.
+L’utilisateur peut revenir à la liste des rendez-vous afin d’en consulter un autre.
+Le scénario nominal s’arrête à la consultation détaillée du rendez-vous. Les opérations techniques ultérieures nécessaires à l’interopérabilité seront spécifiées dans les autres parties du cahier des charges.
+
+5. Scénarios alternatifs
+Patient introuvable
+Si aucun patient ne correspond aux informations utilisées pour la recherche :
+le prototype ne doit pas sélectionner arbitrairement un patient ;
+l’utilisateur doit être informé qu’aucun résultat correspondant n’a été trouvé ;
+il doit pouvoir modifier les critères utilisés ou revenir à l’étape précédente.
+Plusieurs patients potentiellement correspondants
+Si plusieurs patients peuvent correspondre :
+le prototype doit présenter une liste permettant de les différencier ;
+aucun patient ne doit être sélectionné automatiquement sans information suffisante ;
+l’utilisateur effectue lui-même le choix.
+Aucun rendez-vous
+Si le patient existe mais qu’aucun rendez-vous n’est disponible :
+le patient reste correctement identifié ;
+le prototype indique explicitement qu’aucun rendez-vous n’est disponible ;
+cet état ne doit pas être présenté comme une erreur de l’application.
+Rendez-vous incomplet
+Si un rendez-vous est disponible mais que certaines informations sont absentes :
+les données disponibles sont affichées ;
+les champs absents ne sont pas inventés ;
+une mention telle que « information non disponible » peut être utilisée lorsque cela améliore la compréhension ;
+l’utilisateur doit pouvoir distinguer une donnée réellement absente d’une donnée égale à une valeur particulière.
+Professionnel non disponible
+Si aucune information concernant le professionnel n’est disponible :
+le rendez-vous reste consultable ;
+le prototype indique que le professionnel n’est pas renseigné ou que l’information n’est pas disponible ;
+aucune identité fictive n’est générée.
+Lieu non disponible
+Si le lieu du rendez-vous ne peut pas être déterminé :
+le rendez-vous reste affiché ;
+le lieu est présenté comme non disponible ;
+l’application ne doit pas déduire un lieu uniquement à partir d’autres informations non prévues à cet effet.
+Données temporairement indisponibles
+Si les données nécessaires à la consultation ne peuvent pas être obtenues :
+le prototype informe l’utilisateur que les informations sont momentanément indisponibles ;
+il évite de présenter des données partielles comme si elles étaient complètes ;
+l’utilisateur peut réessayer ou revenir à l’écran précédent.
+
+6. Exigences fonctionnelles
+Consultation du patient
+EF-01 — Identification du patient : le prototype doit permettre à l’utilisateur d’identifier ou de sélectionner un patient avant d’accéder à ses rendez-vous.
+EF-02 — Présentation du patient : le prototype doit présenter suffisamment d’informations disponibles sur le patient sélectionné pour que l’utilisateur puisse confirmer qu’il consulte la bonne personne.
+EF-03 — Gestion de l’absence de patient : lorsque le patient recherché ne peut pas être identifié, le prototype doit en informer explicitement l’utilisateur.
+EF-04 — Gestion de plusieurs résultats : lorsque plusieurs patients sont proposés, le prototype doit permettre à l’utilisateur de choisir le patient souhaité sans effectuer automatiquement un choix ambigu.
+Consultation de l’agenda
+EF-05 — Consultation des rendez-vous : après sélection d’un patient, le prototype doit permettre d’obtenir les rendez-vous associés à celui-ci.
+EF-06 — Vue synthétique : les rendez-vous obtenus doivent être présentés sous une forme permettant à l’utilisateur de distinguer facilement les différents rendez-vous.
+EF-07 — Informations temporelles : pour chaque rendez-vous, le prototype doit afficher les informations de date et d’horaire disponibles.
+EF-08 — Statut du rendez-vous : le prototype doit afficher le statut disponible pour chaque rendez-vous.
+EF-09 — Absence de rendez-vous : lorsqu’aucun rendez-vous n’est disponible pour le patient sélectionné, le prototype doit afficher explicitement cette situation.
+Détail du rendez-vous
+EF-10 — Sélection d’un rendez-vous : l’utilisateur doit pouvoir sélectionner un rendez-vous depuis la vue synthétique.
+EF-11 — Consultation détaillée : après sélection, le prototype doit afficher une vue détaillée du rendez-vous.
+EF-12 — Informations métier principales : le détail doit présenter les principales informations disponibles concernant le rendez-vous, notamment la date, l’horaire, le statut et son libellé ou équivalent lorsqu’ils existent.
+EF-13 — Professionnel associé : lorsque l’information est disponible, le prototype doit afficher le professionnel associé au rendez-vous.
+EF-14 — Lieu associé : lorsque l’information est disponible, le prototype doit afficher le lieu associé au rendez-vous.
+EF-15 — Service ou contexte : lorsqu’un service ou une information métier équivalente est disponible et pertinente, le prototype doit pouvoir la présenter.
+Affichage
+EF-16 — Distinction information présente / absente : le prototype doit distinguer une information connue d’une information absente ou indisponible.
+EF-17 — Absence d’invention de données : le prototype ne doit pas compléter automatiquement une donnée métier manquante par une valeur non présente dans la source.
+EF-18 — Navigation : l’utilisateur doit pouvoir revenir du détail d’un rendez-vous vers la liste des rendez-vous du patient.
+Gestion fonctionnelle des anomalies
+EF-19 — Données partielles : une information secondaire manquante ne doit pas empêcher automatiquement la consultation des autres informations du rendez-vous.
+EF-20 — Indisponibilité des données : lorsque les informations ne peuvent pas être obtenues, le prototype doit présenter un message compréhensible par l’utilisateur.
+EF-21 — Cohérence patient-rendez-vous : le prototype doit toujours indiquer clairement à quel patient correspondent les rendez-vous affichés.
+
+7. Exigences non fonctionnelles
+ENF-01 — Simplicité d’utilisation : le parcours entre la sélection d’un patient, l’affichage des rendez-vous et la consultation du détail doit rester simple et compréhensible sans formation spécifique au prototype.
+ENF-02 — Lisibilité : les informations principales, notamment l’identité du patient, la date, l’heure et le statut du rendez-vous, doivent pouvoir être identifiées facilement à l’écran.
+ENF-03 — Confidentialité : le prototype doit limiter l’affichage et la manipulation des données concernant le patient aux informations nécessaires au scénario fonctionnel.
+ENF-04 — Protection contre les confusions : l’interface doit permettre de savoir clairement quel patient est actuellement sélectionné.
+ENF-05 — Robustesse : l’absence d’une donnée non indispensable ne doit pas provoquer l’arrêt complet du prototype.
+ENF-06 — Gestion des erreurs : les erreurs susceptibles d’être rencontrées doivent donner lieu à un retour utilisateur compréhensible plutôt qu’à l’affichage d’une erreur technique brute.
+ENF-07 — Traçabilité : les événements techniques utiles au diagnostic du prototype doivent pouvoir être tracés sans enregistrer inutilement des données personnelles. Le niveau précis de journalisation est à valider avec le groupe.
+ENF-08 — Réactivité : les opérations de consultation doivent produire un temps de réponse compatible avec une démonstration interactive. La valeur maximale acceptable est à valider avec le groupe en fonction du serveur utilisé.
+ENF-09 — Cohérence des écrans : une même information métier doit être représentée de manière cohérente entre la liste des rendez-vous et la vue détaillée.
+
+8. Critères d’acceptation
+IDCritèreMéthode de vérificationRésultat attendu
+
+
+
+
+
+
+CA-01
+Un patient peut être identifié ou sélectionné
+Exécuter le parcours nominal avec un patient disponible
+Le patient peut être sélectionné et son contexte est affiché
+CA-02
+Plusieurs patients ne sont pas confondus
+Utiliser un cas produisant plusieurs résultats lorsque disponible
+L’utilisateur choisit explicitement le patient concerné
+CA-03
+Les rendez-vous du patient peuvent être consultés
+Sélectionner un patient disposant de rendez-vous
+Une liste ou une vue synthétique des rendez-vous est présentée
+CA-04
+Les rendez-vous sont distinguables
+Consulter plusieurs rendez-vous d’un même patient
+Chaque rendez-vous possède suffisamment d’informations pour être identifié séparément
+CA-05
+Les informations temporelles sont affichées
+Ouvrir un rendez-vous contenant des informations de date et d’horaire
+Les informations disponibles sont visibles et compréhensibles
+CA-06
+Le statut est présenté
+Consulter un rendez-vous possédant un statut
+Le statut est affiché à l’utilisateur
+CA-07
+Le détail d’un rendez-vous est accessible
+Sélectionner un rendez-vous depuis la liste
+Une vue détaillée correspondant au rendez-vous choisi est affichée
+CA-08
+Les informations complémentaires sont utilisées lorsqu’elles existent
+Tester un rendez-vous disposant d’un professionnel ou d’un lieu
+Les informations disponibles sont présentées dans le détail
+CA-09
+L’absence de rendez-vous est gérée
+Sélectionner un patient ne disposant d’aucun rendez-vous
+Un message indique qu’aucun rendez-vous n’est disponible
+CA-10
+Une donnée secondaire manquante ne bloque pas le rendez-vous
+Tester un rendez-vous incomplet
+Les autres données restent consultables et la donnée absente est identifiée comme telle
+CA-11
+Aucune donnée absente n’est inventée
+Comparer l’affichage avec un cas où un champ métier manque
+Le prototype n’affiche pas de valeur fictive
+CA-12
+Un patient introuvable est correctement signalé
+Effectuer une recherche ne donnant aucun résultat
+L’utilisateur est informé qu’aucun patient correspondant n’a été trouvé
+CA-13
+Une indisponibilité des données produit un message adapté
+Simuler ou provoquer une indisponibilité de la source
+Un message compréhensible est affiché sans résultat trompeur
+CA-14
+Le contexte patient reste identifiable
+Naviguer entre liste et détail
+L’utilisateur peut toujours déterminer à quel patient correspondent les données
+CA-15
+Le retour à la liste est possible
+Ouvrir puis quitter le détail d’un rendez-vous
+L’utilisateur retrouve la liste des rendez-vous du patient sélectionné
+CA-16
+L’application reste exploitable avec des données partielles
+Tester un rendez-vous avec une ou plusieurs informations facultatives absentes
+Le prototype continue de fonctionner et signale les absences sans blocage injustifié
+
+
+9. Analyse ReEIF : métier / organisation / juridique
+Métier / processus de soin
+L’information de rendez-vous intervient en amont ou autour d’une activité de prise en charge. Elle permet notamment de savoir qu’une rencontre, un examen, une consultation ou une autre activité planifiée doit avoir lieu à une certaine date.
+Elle peut être utile pour :
+accueillir ou orienter correctement le patient ;
+anticiper une activité prévue ;
+connaître le moment et éventuellement le lieu d’une prise en charge ;
+connaître le professionnel ou le service impliqué lorsqu’ils sont renseignés ;
+vérifier le statut d’une activité planifiée.
+Les utilisateurs concernés sont les personnes ayant besoin de cette information dans le cadre de leur activité autorisée.
+La qualité de cette information est importante.
+Une information fausse peut entraîner par exemple :
+une mauvaise orientation ;
+une présence du patient au mauvais moment ;
+une confusion entre plusieurs rendez-vous ;
+une mauvaise préparation de l’activité.
+Une information absente peut empêcher l’utilisateur de confirmer qu’un rendez-vous existe ou d’en connaître les caractéristiques.
+Une information en retard peut présenter un rendez-vous comme toujours prévu alors qu’une évolution du processus métier a déjà eu lieu.
+Le prototype doit donc privilégier la restitution fidèle des données disponibles plutôt que leur interprétation ou leur reconstruction arbitraire.
+Organisation / gouvernance
+Dans un système réel, il faut distinguer plusieurs responsabilités.
+Production de l’information
+L’information peut être produite par le composant du SI dans lequel le rendez-vous est enregistré.
+Le prototype ne doit pas considérer automatiquement qu’il est lui-même responsable de cette création.
+Consultation
+Le prototype joue principalement un rôle de consommateur de l’information : il permet à un utilisateur autorisé de la consulter.
+Correction
+Lorsqu’une anomalie métier est détectée, la correction doit normalement être réalisée dans le système qui est responsable de la donnée ou selon les procédures définies par l’organisation.
+Hypothèse : dans le périmètre de ce prototype, l’application n’est pas la source de référence des rendez-vous.
+Par conséquent, si l’utilisateur détecte :
+une date incorrecte ;
+un mauvais professionnel ;
+un mauvais lieu ;
+un rendez-vous absent ;
+le prototype peut signaler ou rendre visible le problème, mais la correction elle-même n’est pas automatiquement de sa responsabilité.
+Pour un système réel, il serait nécessaire de définir explicitement :
+le propriétaire de la donnée ;
+le système de référence ;
+les personnes autorisées à la modifier ;
+les procédures de correction ;
+les responsabilités en cas d’incohérence entre systèmes.
+Ces éléments dépassent le périmètre minimal du prototype et devront être adaptés au contexte réel de l’organisation.
+Juridique / réglementaire
+Les informations manipulées concernent des patients et doivent donc être considérées comme sensibles.
+Sans mener une analyse juridique exhaustive, le cahier des charges doit prévoir plusieurs principes généraux :
+limiter la consultation aux utilisateurs ayant un besoin légitime ;
+limiter les données manipulées aux informations nécessaires au scénario ;
+ne pas exposer inutilement les données personnelles ;
+éviter d’inscrire des données concernant des patients dans des traces ou journaux qui n’en ont pas besoin ;
+protéger les moyens d’accès aux systèmes manipulant ces informations ;
+prévoir la traçabilité appropriée des accès ou opérations lorsque le contexte l’exige ;
+ne pas utiliser de données réelles en dehors du cadre autorisé pour le projet ;
+éviter de publier des informations de santé ou des secrets d’accès dans un dépôt de code partagé.
+Le prototype académique ne constitue pas, à lui seul, un système conforme à toutes les exigences réglementaires applicables à un environnement clinique réel. La conformité complète dépendrait notamment du contexte d’hébergement, de la gouvernance, des habilitations et des procédures de l’organisation.
+
+10. Hypothèses et points à confirmer avec le groupe
+Les éléments suivants doivent être considérés comme des hypothèses ou des décisions encore à prendre collectivement.
+Hypothèse 1 — Type d’utilisateur : le prototype est utilisé par un professionnel ou un agent autorisé. La fonction exacte de cet utilisateur doit être confirmée par le groupe si elle doit apparaître dans le cahier des charges final.
+Hypothèse 2 — Consultation uniquement : le périmètre minimal ne comprend ni création, ni modification, ni annulation d’un rendez-vous.
+Hypothèse 3 — Système source : le prototype consulte une information produite par un autre composant du SI et n’est pas considéré comme le système maître des rendez-vous.
+Hypothèse 4 — Identification du patient : les critères précis permettant de rechercher ou sélectionner un patient seront définis avec le membre chargé de la spécification des données.
+Hypothèse 5 — Données obligatoires : le groupe doit déterminer, après analyse des données réellement disponibles, quelles informations de rendez-vous seront considérées comme indispensables et lesquelles seront facultatives.
+Hypothèse 6 — Présentation de l’agenda : le choix entre liste chronologique, calendrier graphique ou combinaison des deux reste à confirmer. Le besoin fonctionnel impose surtout une vue permettant de distinguer les rendez-vous.
+Hypothèse 7 — Rendez-vous passés et futurs : le groupe doit décider si le prototype affiche uniquement les rendez-vous futurs ou également l’historique.
+Hypothèse 8 — Ordre d’affichage : un ordre chronologique semble pertinent mais doit être validé collectivement.
+Hypothèse 9 — Données réelles : le groupe doit vérifier la nature des données disponibles sur le serveur pédagogique et les conditions dans lesquelles elles peuvent être utilisées.
+Hypothèse 10 — Professionnel, service et lieu : ces informations seront présentées lorsqu’elles sont disponibles, mais leur représentation exacte dépendra de la spécification de données élaborée dans la partie suivante.
+Hypothèse 11 — Traçabilité : le niveau de journalisation nécessaire pour le prototype reste à définir avec le membre chargé de l’architecture et de la sécurité.
+Hypothèse 12 — Temps de réponse : aucun seuil chiffré n’est fixé tant que les contraintes du serveur et de l’environnement de démonstration ne sont pas connues.
+Point à confirmer 1 : quel acteur métier sera présenté officiellement dans le scénario final ?
+Point à confirmer 2 : quel mécanisme d’identification du patient sera réalisable avec les données disponibles ?
+Point à confirmer 3 : quelles informations de rendez-vous sont effectivement disponibles dans le serveur retenu ?
+Point à confirmer 4 : quelles informations seront nécessaires à la transformation ultérieure vers le format cible ?
+Point à confirmer 5 : quelles données pourront être considérées comme facultatives sans empêcher la transformation ?
+Point à confirmer 6 : quel comportement doit être retenu lorsqu’un rendez-vous est techniquement présent mais insuffisamment renseigné pour l’étape d’interopérabilité ?
+Point à confirmer 7 : le prototype devra-t-il seulement afficher le calendrier ou également mettre en évidence les différences entre la représentation métier et la représentation destinée à l’échange ?
+Point à confirmer 8 : quelles responsabilités seront attribuées aux deux autres parties du cahier des charges afin d’éviter les doublons, notamment concernant la sécurité, l’information, l’architecture et les règles d’échange ?
+
+
+
+
+
+
+Prompt2:
+
+# RÔLE
+
+Agis comme un expert senior en :
+- analyse fonctionnelle des systèmes d'information de santé ;
+- rédaction de cahiers des charges ;
+- interopérabilité en santé ;
+- analyse ReEIF ;
+- ingénierie des exigences et critères d'acceptation.
+
+Tu interviens comme relecteur critique d'une première version d'un cahier des
+charges déjà produite par une IA.
+
+# CONTEXTE
+
+Nous développons, dans le cadre d'un projet universitaire d'interopérabilité
+en santé, un prototype portant sur :
+
+« Rendez-vous / calendrier d'un patient ».
+
+Le prototype devra ultérieurement :
+- consulter les informations provenant d'un serveur FHIR ;
+- présenter les rendez-vous d'un patient ;
+- participer à une transformation ultérieure vers HL7 v2.
+
+Cette demande concerne EXCLUSIVEMENT la partie « cadrage métier et
+fonctionnel » du cahier des charges.
+
+Les ressources FHIR, profils, ValueSets, endpoints, messages et segments HL7 v2,
+ainsi que l'architecture technique détaillée, sont traités par les deux autres
+membres du groupe.
+
+# ENTRÉE
+Tu devras agir maintenant sur le résultat de mon précédent prompt comme input.
+
+# OBJECTIF DE CETTE ITÉRATION
+
+Ne repars pas de zéro.
+
+Effectue une revue critique de cette première version puis produis une
+version améliorée, plus précise, cohérente, testable et directement
+exploitable par les membres chargés :
+
+1. de la spécification FHIR et sémantique ;
+2. de l'architecture, de l'intégration et du mapping vers HL7 v2.
+
+Tu dois améliorer la spécification sans anticiper leurs choix techniques.
+
+# 1 — AUDIT DU RÉSULTAT EXISTANT
+
+Commence par examiner systématiquement la première version et identifie :
+
+- ambiguïtés ;
+- formulations trop générales ;
+- exigences non testables ;
+- exigences redondantes ;
+- incohérences entre scénario, exigences et critères d'acceptation ;
+- critères d'acceptation sans exigence correspondante ;
+- exigences sans critère de vérification ;
+- hypothèses pouvant être transformées en décision fonctionnelle ;
+- hypothèses qui doivent réellement rester ouvertes ;
+- éléments pouvant conduire à une interprétation différente par les
+  développeurs ;
+- éléments qui empiètent inutilement sur la spécification FHIR ou HL7.
+
+Classe chaque problème avec un niveau :
+- BLOQUANT ;
+- IMPORTANT ;
+- MINEUR.
+
+Pour chaque problème, indique brièvement la correction recommandée.
+
+# 2 — CLARIFICATION DU PÉRIMÈTRE MVP
+
+À partir du besoin initial, distingue explicitement :
+
+## Obligatoire pour le MVP
+Fonctions nécessaires pour considérer le prototype comme conforme.
+
+## Conditionnel
+Fonctions ou informations présentées uniquement si la donnée existe dans
+la source.
+
+## Optionnel
+Améliorations non nécessaires à la validation du prototype.
+
+## Hors périmètre
+Fonctions explicitement non prévues.
+
+Ne laisse pas une même fonction apparaître dans plusieurs catégories.
+
+# 3 — ACTEURS
+
+Réexamine les acteurs et distingue :
+
+- acteur humain principal ;
+- acteur système externe ;
+- entité métier concernée.
+
+Ne qualifie pas le patient d'acteur du prototype s'il n'interagit pas
+directement avec celui-ci.
+
+Pour l'utilisateur principal, propose le rôle le plus neutre compatible avec
+le sujet si aucune profession précise n'est imposée.
+
+Toute décision non imposée par l'énoncé doit rester marquée « Hypothèse »
+ou « Décision proposée à valider ».
+
+# 4 — DONNÉES MÉTIER
+
+Ajoute un dictionnaire fonctionnel des informations nécessaires au scénario.
+
+Utilise le tableau :
+
+| Information métier | Finalité métier | MVP obligatoire ? |
+| Disponibilité conditionnelle ? | Comportement si absente |
+
+Reste STRICTEMENT au niveau métier.
+
+N'utilise :
+- aucun nom de ressource FHIR ;
+- aucun chemin FHIR ;
+- aucun ValueSet ;
+- aucun segment ou champ HL7 v2.
+
+Le dictionnaire doit pouvoir servir ensuite d'entrée au travail du membre
+chargé du mapping FHIR.
+
+# 5 — SCÉNARIO NOMINAL
+
+Réécris le scénario nominal en étapes numérotées SN-01, SN-02, etc.
+
+Pour chaque étape, préciser lorsque pertinent :
+- action utilisateur ;
+- réaction attendue du prototype ;
+- résultat métier observable.
+
+Évite les détails d'implémentation.
+
+Le scénario doit conduire sans ambiguïté de :
+l'accès à l'application
+→ identification du patient
+→ confirmation du contexte patient
+→ consultation des rendez-vous
+→ sélection
+→ détail du rendez-vous.
+
+# 6 — SCÉNARIOS ALTERNATIFS
+
+Numérote les scénarios SA-01, SA-02, etc.
+
+Distingue explicitement :
+
+1. résultat métier valide :
+   ex. patient sans rendez-vous ;
+
+2. données métier partielles :
+   ex. professionnel ou lieu absent ;
+
+3. résultat de recherche négatif :
+   ex. patient introuvable ;
+
+4. ambiguïté :
+   ex. plusieurs patients correspondants ;
+
+5. indisponibilité du système ou des données.
+
+Pour chaque scénario, préciser :
+- condition déclenchante ;
+- comportement attendu ;
+- possibilité de poursuivre ou non le parcours.
+
+# 7 — EXIGENCES FONCTIONNELLES
+
+Révise les exigences existantes.
+
+Chaque exigence doit :
+- porter un identifiant EF-XX ;
+- exprimer UNE seule obligation ;
+- être observable ;
+- être testable ;
+- éviter « correctement », « suffisamment », « facilement » ou
+  « pertinent » sauf si un critère observable est associé ;
+- ne contenir aucune solution technique FHIR/HL7.
+
+Supprime ou fusionne les exigences réellement redondantes.
+
+Classe chaque exigence :
+- MUST — indispensable au prototype ;
+- SHOULD — souhaitable ;
+- COULD — optionnelle.
+
+# 8 — EXIGENCES NON FONCTIONNELLES
+
+Conserve seulement celles qui ont un impact réel sur le prototype.
+
+Pour chaque ENF :
+- formuler une propriété vérifiable ;
+- ne pas inventer de seuil numérique ;
+- écrire « seuil à valider » lorsqu'une mesure chiffrée dépend du groupe
+  ou de l'environnement.
+
+Distingue clairement exigence fonctionnelle et propriété de qualité.
+
+# 9 — CRITÈRES D'ACCEPTATION
+
+Pour chaque exigence MUST, produire au moins un critère d'acceptation.
+
+Utilise :
+
+| ID CA | Exigence liée | Précondition / données de test |
+| Action de vérification | Résultat attendu |
+
+Les tests doivent notamment prévoir :
+- un patient identifiable ayant des rendez-vous ;
+- un patient sans rendez-vous ;
+- plusieurs patients candidats si ce cas est retenu ;
+- un rendez-vous avec une donnée facultative absente ;
+- une indisponibilité de données simulée lorsque cela est réalisable.
+
+Ne formule pas de critère qui dépende du hasard des données présentes le jour
+de la démonstration sans préciser les préconditions nécessaires.
+
+# 10 — MATRICE DE TRAÇABILITÉ
+
+Produis obligatoirement une matrice :
+
+| Exigence | Étape du scénario ou scénario alternatif |
+| Critère(s) d'acceptation |
+
+Puis réalise les contrôles suivants :
+
+- aucune EF MUST sans critère ;
+- aucun critère sans exigence ;
+- aucune fonctionnalité du scénario sans exigence correspondante ;
+- aucun comportement alternatif important sans exigence correspondante.
+
+Signale explicitement les éventuelles exceptions.
+
+# 11 — ANALYSE ReEIF
+
+Pour les dimensions :
+- métier / processus ;
+- organisation / gouvernance ;
+- juridique / réglementaire ;
+
+évite une présentation purement théorique.
+
+Pour chaque point important, raisonner selon :
+
+information ou situation
+→ risque
+→ conséquence potentielle
+→ responsabilité concernée
+→ exigence du cahier des charges associée.
+
+En particulier, analyser :
+- mauvais patient ;
+- rendez-vous absent ;
+- information erronée ;
+- information périmée ;
+- information partielle ;
+- consultation non légitime.
+
+Ne fournis pas de conseil juridique et ne prétends pas certifier la conformité
+réglementaire du prototype.
+
+# 12 — GESTION DES HYPOTHÈSES
+
+Reprends les hypothèses de la première version et répartis-les en trois
+catégories :
+
+A. décisions fonctionnelles que le groupe peut prendre maintenant ;
+B. décisions dépendant de l'analyse FHIR du membre 2 ;
+C. décisions dépendant de l'architecture/intégration du membre 3.
+
+Pour chaque décision de catégorie A, propose une recommandation argumentée,
+sans la présenter comme une vérité imposée.
+
+# 13 — CONTRAT DE PASSAGE AUX MEMBRES 2 ET 3
+
+Termine par une section très concise précisant ce que cette partie impose
+aux spécifications ultérieures :
+
+- informations métier que les données FHIR devront permettre de représenter ;
+- informations obligatoires ou facultatives ;
+- cas fonctionnels à supporter ;
+- anomalies à rendre visibles ;
+- contraintes de fidélité des informations ;
+- décisions encore ouvertes.
+
+N'effectue PAS toi-même le mapping FHIR ou HL7 v2.
+
+# CONTRAINTES STRICTES
+
+- Français professionnel.
+- Pas de code.
+- Pas d'endpoint REST.
+- Pas de ressource FHIR détaillée.
+- Pas de chemin FHIR.
+- Pas de profil FHIR.
+- Pas de terminologie ou ValueSet détaillé.
+- Pas de segment HL7 v2.
+- Ne pas inventer d'établissement, de service clinique ou d'organisation.
+- Marquer toute hypothèse.
+- Privilégier les formulations concrètes aux paragraphes théoriques.
+- Ne pas augmenter artificiellement le volume du cahier des charges.
+- Conserver les éléments pertinents de la première version au lieu de les
+  réécrire simplement pour changer leur style.
+
+# CONTRÔLE QUALITÉ FINAL
+
+Avant de terminer, effectue silencieusement les vérifications suivantes :
+
+1. Le besoin métier, le scénario, les EF et les CA décrivent-ils le même
+   prototype ?
+2. Chaque EF MUST est-elle testable ?
+3. Chaque EF MUST possède-t-elle au moins un CA ?
+4. Chaque CA renvoie-t-il à une EF ?
+5. Les cas d'erreur sont-ils distingués des états métier normaux ?
+6. Les données obligatoires et facultatives sont-elles distinguées ?
+7. Les hypothèses sont-elles clairement identifiables ?
+8. Le texte prépare-t-il effectivement le travail des membres 2 et 3 ?
+9. Ai-je évité de prendre à leur place des décisions FHIR/HL7 ?
+10. Le résultat est-il suffisamment précis pour guider le développement ?
+
+Si une vérification échoue, corrige le résultat avant de le fournir.
+
+# FORMAT DE SORTIE
+
+Retourne successivement :
+
+1. Audit critique de la version 1
+2. Périmètre MVP révisé
+3. Acteurs révisés
+4. Dictionnaire des données métier
+5. Scénario nominal
+6. Scénarios alternatifs
+7. Exigences fonctionnelles
+8. Exigences non fonctionnelles
+9. Critères d'acceptation
+10. Matrice de traçabilité
+11. Analyse ReEIF
+12. Hypothèses et décisions à prendre
+13. Contrat de passage aux membres 2 et 3
+
+
+Résultat prompt2:
+
+1. Contexte et problématique
+Le projet porte sur la conception d’un prototype permettant à un utilisateur habilité de consulter les rendez-vous associés à un patient au sein d’un système d’information de santé.
+Dans un SI de santé, l’information relative aux rendez-vous peut être produite par un système d’agenda, un outil de planification, un logiciel métier ou un autre composant applicatif. Cette information doit pouvoir être consultée de manière fiable par les utilisateurs autorisés qui en ont besoin dans le cadre de leur activité.
+Le problème métier ne se limite donc pas à l’affichage d’un calendrier. Il consiste à permettre à l’utilisateur de retrouver le bon patient, consulter les rendez-vous qui lui sont rattachés et disposer d’une information compréhensible, cohérente et exploitable.
+Une information de rendez-vous erronée, absente, incomplète ou périmée peut notamment conduire à une mauvaise orientation, un rendez-vous manqué, une préparation inadéquate de la prise en charge ou une perte de temps pour les utilisateurs.
+Le besoin utilisateur est donc de disposer d’un moyen simple permettant :
+d’identifier ou sélectionner un patient ;
+de confirmer qu’il s’agit bien du patient recherché ;
+de consulter les rendez-vous qui lui sont associés ;
+de distinguer les différents rendez-vous ;
+d’accéder au détail d’un rendez-vous ;
+d’être informé lorsque certaines informations sont absentes ou indisponibles.
+La solution envisagée est un prototype de consultation. Il devra restituer les informations de rendez-vous disponibles sans inventer les données manquantes.
+Hypothèse : le prototype n’est pas considéré comme le système maître des rendez-vous. Il consomme une information produite ou maintenue ailleurs dans le système d’information.
+
+2. Objectifs et périmètre
+Objectif général
+L’objectif général du prototype est de permettre à un utilisateur habilité de retrouver un patient et de consulter les rendez-vous qui lui sont associés, dans une interface suffisamment claire pour permettre une exploitation métier et une démonstration des mécanismes d’interopérabilité prévus dans les phases ultérieures.
+Objectifs fonctionnels
+Le prototype doit permettre de :
+sélectionner un patient ;
+confirmer le contexte du patient sélectionné ;
+consulter ses rendez-vous ;
+afficher une vue synthétique des rendez-vous ;
+distinguer les rendez-vous entre eux ;
+afficher les informations temporelles disponibles ;
+afficher le statut lorsqu’il est disponible ;
+sélectionner un rendez-vous ;
+consulter son détail ;
+afficher les informations complémentaires disponibles, telles que professionnel, service ou lieu ;
+signaler les données manquantes ;
+gérer les cas où aucune donnée ou aucun rendez-vous n’est disponible ;
+permettre un retour simple du détail à la liste des rendez-vous.
+Périmètre MVP
+Le périmètre minimal couvre :
+la consultation d’un patient ;
+la consultation de ses rendez-vous ;
+la présentation synthétique des rendez-vous ;
+la consultation du détail d’un rendez-vous ;
+la gestion des données partielles ;
+la gestion fonctionnelle des cas d’absence de résultat ;
+la gestion des situations d’indisponibilité.
+Fonctionnalités conditionnelles
+Les informations suivantes sont affichées lorsqu’elles sont disponibles :
+professionnel associé ;
+service ou contexte organisationnel ;
+lieu ;
+libellé, type ou motif du rendez-vous ;
+informations descriptives complémentaires.
+Fonctionnalités optionnelles
+Peuvent être ajoutées sans être nécessaires au MVP :
+vue graphique de type calendrier ;
+filtrage ;
+tri configurable ;
+distinction graphique entre rendez-vous passés et futurs.
+Hors périmètre
+Ne font pas partie du périmètre minimal :
+création d’un rendez-vous ;
+modification ;
+annulation ;
+recherche de créneaux ;
+détection des conflits d’agenda ;
+rappels par SMS ou e-mail ;
+prise de rendez-vous directement par le patient ;
+facturation ;
+gestion du dossier médical ;
+synchronisation bidirectionnelle entre plusieurs agendas.
+
+3. Acteurs
+Catégorie
+Élément
+Rôle
+Besoin
+Interaction avec le prototype
+Acteur humain principal
+Utilisateur habilité du SI de santé
+Consulter les rendez-vous d’un patient
+Accéder à une information fiable et compréhensible
+Sélection du patient, consultation des rendez-vous, ouverture du détail
+Acteur système externe
+Système source des informations
+Met à disposition les données
+Fournir les informations nécessaires
+Alimente le prototype avec les données disponibles
+Entité métier concernée
+Patient
+Personne à laquelle les rendez-vous sont associés
+Être correctement identifié
+Pas d’interaction directe dans le MVP
+
+Décision proposée à valider : utiliser le terme « utilisateur habilité » comme acteur principal afin de ne pas imposer arbitrairement une profession précise.
+Hypothèse : l’utilisateur dispose des droits nécessaires pour consulter les données du patient.
+
+4. Dictionnaire des données métier
+Information métier
+Finalité métier
+Obligatoire pour le MVP ?
+Conditionnelle ?
+Comportement si absente
+Identité visible du patient
+Confirmer le bon contexte patient
+Oui
+Non
+La consultation ne doit pas se poursuivre si le patient reste ambigu
+Identifiant du patient
+Distinguer les patients si nécessaire
+Non
+Oui
+Utiliser les autres éléments disponibles
+Date du rendez-vous
+Situer l’événement dans le temps
+Oui pour un rendez-vous exploitable
+Non
+Rendez-vous signalé comme incomplet
+Heure ou plage horaire
+Organiser la consultation dans le temps
+Oui si disponible pour le rendez-vous
+Oui
+Afficher « non renseignée »
+Statut du rendez-vous
+Comprendre l’état du rendez-vous
+Oui lorsqu’il est fourni
+Oui
+Signaler « statut non disponible »
+Libellé / type / motif
+Comprendre la nature du rendez-vous
+Non
+Oui
+Ne pas inventer de valeur
+Professionnel associé
+Identifier l’intervenant
+Non
+Oui
+Afficher « non renseigné »
+Service / contexte
+Situer le rendez-vous dans l’organisation
+Non
+Oui
+Ne pas bloquer la consultation
+Lieu
+Permettre l’orientation
+Non
+Oui
+Afficher « non renseigné »
+Identifiant du rendez-vous
+Distinguer les rendez-vous et préparer les traitements ultérieurs
+À valider
+Oui
+À confirmer dans la partie données
+État de disponibilité de l’information
+Distinguer absence de donnée et erreur
+Oui
+Non
+Afficher un état explicite
+
+
+5. Scénario nominal
+SN-01 — Accès au prototype
+ L’utilisateur accède au prototype. Le système affiche l’interface permettant de rechercher ou sélectionner un patient.
+SN-02 — Identification du patient
+ L’utilisateur renseigne ou choisit les informations nécessaires pour retrouver le patient.
+SN-03 — Confirmation du patient
+ Le prototype présente les informations disponibles permettant de confirmer le patient sélectionné.
+SN-04 — Validation du patient
+ L’utilisateur confirme ou sélectionne explicitement le patient concerné.
+SN-05 — Consultation des rendez-vous
+ Le prototype récupère les rendez-vous associés au patient sélectionné.
+SN-06 — Affichage synthétique
+ Le prototype présente les rendez-vous disponibles dans une vue synthétique.
+SN-07 — Consultation des informations principales
+ Pour chaque rendez-vous, le prototype affiche les informations disponibles permettant de le distinguer des autres, notamment la date, l’heure ou la plage horaire et le statut lorsque celui-ci est disponible.
+SN-08 — Informations complémentaires
+ Lorsque les informations existent, le prototype affiche également le professionnel, le service, le lieu ou le libellé du rendez-vous.
+SN-09 — Sélection d’un rendez-vous
+ L’utilisateur choisit un rendez-vous parmi ceux présentés.
+SN-10 — Affichage du détail
+ Le prototype affiche le détail du rendez-vous sélectionné.
+SN-11 — Maintien du contexte patient
+ La vue détaillée permet toujours d’identifier le patient auquel appartient le rendez-vous.
+SN-12 — Retour à la liste
+ L’utilisateur peut revenir à la liste des rendez-vous sans devoir sélectionner de nouveau le patient.
+
+6. Scénarios alternatifs
+SA-01 — Patient introuvable
+Condition : aucun patient ne correspond à la recherche.
+Comportement attendu :
+aucun patient n’est sélectionné arbitrairement ;
+un message indique qu’aucun patient n’a été trouvé ;
+l’utilisateur peut modifier sa recherche ou revenir à l’étape précédente.
+SA-02 — Plusieurs patients correspondent
+Condition : plusieurs patients correspondent aux critères utilisés.
+Comportement attendu :
+le prototype présente les candidats ;
+aucun patient n’est sélectionné automatiquement ;
+l’utilisateur choisit explicitement le patient concerné.
+SA-03 — Aucun rendez-vous
+Condition : le patient est identifié mais aucun rendez-vous n’est disponible.
+Comportement attendu :
+le patient reste identifié ;
+le prototype indique qu’aucun rendez-vous n’est disponible ;
+cette situation n’est pas présentée comme une erreur technique.
+SA-04 — Rendez-vous partiellement renseigné
+Condition : un rendez-vous existe mais une information facultative manque.
+Comportement attendu :
+les autres données disponibles sont affichées ;
+la donnée absente est clairement identifiée ;
+aucune valeur fictive n’est produite.
+SA-05 — Professionnel non disponible
+Le rendez-vous reste consultable et la mention « professionnel non renseigné » ou équivalent peut être affichée.
+SA-06 — Lieu non disponible
+Le rendez-vous reste consultable et le lieu est présenté comme non renseigné.
+SA-07 — Rendez-vous insuffisamment renseigné
+Si une information considérée comme indispensable au MVP est absente, le rendez-vous est signalé comme incomplet.
+La consultation partielle peut rester possible.
+SA-08 — Données indisponibles
+Condition : les informations nécessaires ne peuvent pas être obtenues.
+Comportement attendu :
+un message compréhensible est présenté ;
+aucune donnée partielle n’est présentée comme complète ;
+l’utilisateur peut réessayer ou revenir à l’étape précédente.
+
+7. Exigences fonctionnelles
+Consultation du patient
+EF-01 — Sélection du patient — MUST : le prototype doit permettre à l’utilisateur de sélectionner explicitement un patient avant l’accès à ses rendez-vous.
+EF-02 — Confirmation du contexte patient — MUST : après sélection, le prototype doit présenter les informations disponibles permettant de distinguer le patient sélectionné des autres candidats.
+EF-03 — Patient introuvable — MUST : si aucun patient ne correspond à la recherche, le prototype doit en informer l’utilisateur sans sélectionner de patient.
+EF-04 — Plusieurs patients — MUST : si plusieurs patients correspondent, le prototype doit laisser l’utilisateur choisir explicitement le patient concerné.
+Consultation des rendez-vous
+EF-05 — Consultation des rendez-vous — MUST : après sélection du patient, le prototype doit présenter les rendez-vous qui lui sont associés.
+EF-06 — Aucun rendez-vous — MUST : lorsqu’aucun rendez-vous n’est disponible, le prototype doit afficher explicitement cet état.
+EF-07 — Distinction des rendez-vous — MUST : les rendez-vous présentés doivent pouvoir être distingués les uns des autres à partir des informations disponibles.
+EF-08 — Informations temporelles — MUST : les informations temporelles disponibles pour chaque rendez-vous doivent être affichées.
+EF-09 — Statut — MUST : lorsque le statut est fourni par la source, il doit être visible.
+Détail du rendez-vous
+EF-10 — Sélection d’un rendez-vous — MUST : l’utilisateur doit pouvoir ouvrir un rendez-vous depuis la vue synthétique.
+EF-11 — Consultation détaillée — MUST : le prototype doit afficher une vue détaillée correspondant au rendez-vous sélectionné.
+EF-12 — Informations complémentaires — MUST : lorsqu’un professionnel, un service, un lieu ou une information descriptive existe, le prototype doit pouvoir la présenter.
+Gestion des données
+EF-13 — Donnée absente — MUST : une information absente ne doit jamais être remplacée par une valeur métier inventée.
+EF-14 — Données partielles — MUST : l’absence d’une information facultative ne doit pas empêcher la consultation des autres informations disponibles.
+EF-15 — Indisponibilité — MUST : lorsque les informations ne peuvent pas être obtenues, le prototype doit en informer l’utilisateur.
+EF-16 — Cohérence patient-rendez-vous — MUST : les rendez-vous affichés et leur détail doivent rester clairement rattachés au patient sélectionné.
+EF-17 — Retour à la liste — MUST : l’utilisateur doit pouvoir revenir du détail à la liste des rendez-vous du même patient.
+Exigences souhaitables
+EF-18 — Ordre chronologique — SHOULD : les rendez-vous devraient être présentés selon un ordre temporel cohérent.
+EF-19 — Distinction passé/futur — SHOULD : si les deux catégories sont affichées, le prototype devrait permettre de les distinguer.
+EF-20 — Vue calendrier — COULD : une représentation graphique de type calendrier peut être proposée en complément de la vue principale.
+
+8. Exigences non fonctionnelles
+ENF-01 — Lisibilité : le patient sélectionné et les principales informations du rendez-vous doivent être identifiables clairement dans l’interface.
+ENF-02 — Cohérence d’affichage : une même information métier doit être présentée de manière cohérente entre la vue synthétique et la vue détaillée.
+ENF-03 — Confidentialité : seules les informations nécessaires au scénario doivent être affichées et manipulées par le prototype.
+ENF-04 — Robustesse : l’absence d’une information facultative ne doit pas provoquer l’arrêt complet de l’application.
+ENF-05 — Gestion des erreurs : une anomalie fonctionnelle ou technique doit produire un message compréhensible plutôt qu’une erreur technique brute.
+ENF-06 — Traçabilité : les événements utiles au diagnostic devraient pouvoir être tracés sans journaliser inutilement des données personnelles. Le niveau exact de journalisation est à valider.
+ENF-07 — Réactivité : le temps de réponse doit rester compatible avec une utilisation interactive pendant la démonstration. Le seuil est à valider.
+ENF-08 — Simplicité : le scénario principal doit pouvoir être réalisé sans connaissance technique particulière de FHIR ou de HL7.
+
+9. Critères d’acceptation
+ID
+Exigence liée
+Précondition / données de test
+Action de vérification
+Résultat attendu
+CA-01
+EF-01
+Patient identifiable
+Effectuer la sélection
+Le patient est explicitement sélectionné
+CA-02
+EF-02
+Patient sélectionné
+Accéder aux rendez-vous
+Le contexte patient reste identifiable
+CA-03
+EF-03
+Recherche sans résultat
+Effectuer la recherche
+Aucun patient n’est sélectionné et un message est affiché
+CA-04
+EF-04
+Plusieurs patients candidats
+Effectuer la recherche
+L’utilisateur doit choisir explicitement un patient
+CA-05
+EF-05
+Patient avec rendez-vous
+Sélectionner le patient
+Ses rendez-vous sont affichés
+CA-06
+EF-06
+Patient sans rendez-vous
+Sélectionner le patient
+Un message « aucun rendez-vous » est affiché sans erreur
+CA-07
+EF-07
+Patient avec plusieurs rendez-vous
+Consulter la vue synthétique
+Les rendez-vous sont distinguables
+CA-08
+EF-08
+Rendez-vous avec données temporelles
+Consulter le rendez-vous
+Les informations temporelles sont visibles
+CA-09
+EF-09
+Rendez-vous avec statut
+Consulter le rendez-vous
+Le statut est affiché
+CA-10
+EF-10 / EF-11
+Rendez-vous disponible
+Sélectionner le rendez-vous
+Le détail correspondant est affiché
+CA-11
+EF-12
+Rendez-vous avec professionnel, lieu ou service
+Consulter le détail
+Les informations disponibles sont présentées
+CA-12
+EF-13
+Donnée facultative absente
+Consulter le rendez-vous
+Aucune valeur fictive n’est affichée
+CA-13
+EF-14
+Rendez-vous partiel
+Consulter le détail
+Les autres informations restent accessibles
+CA-14
+EF-15
+Indisponibilité simulée
+Lancer la consultation
+Un message compréhensible est affiché
+CA-15
+EF-16
+Patient avec plusieurs rendez-vous
+Naviguer entre liste et détail
+Le contexte patient reste identifiable
+CA-16
+EF-17
+Rendez-vous ouvert
+Utiliser le retour
+La liste du même patient réapparaît
+
+
+10. Matrice de traçabilité
+Exigence
+Scénario associé
+Critère d’acceptation
+EF-01
+SN-02 à SN-04
+CA-01
+EF-02
+SN-03
+CA-02
+EF-03
+SA-01
+CA-03
+EF-04
+SA-02
+CA-04
+EF-05
+SN-05 / SN-06
+CA-05
+EF-06
+SA-03
+CA-06
+EF-07
+SN-06 / SN-07
+CA-07
+EF-08
+SN-07 / SN-10
+CA-08
+EF-09
+SN-07 / SN-10
+CA-09
+EF-10
+SN-09
+CA-10
+EF-11
+SN-10
+CA-10
+EF-12
+SN-08 / SN-10
+CA-11
+EF-13
+SA-04 à SA-06
+CA-12
+EF-14
+SA-04 à SA-07
+CA-13
+EF-15
+SA-08
+CA-14
+EF-16
+SN-03 à SN-12
+CA-15
+EF-17
+SN-12
+CA-16
+
+Toutes les exigences MUST disposent ainsi d’au moins un critère d’acceptation.
+
+11. Analyse ReEIF : métier / organisation / juridique
+Métier / processus de soin
+L’information de rendez-vous intervient en amont ou autour d’une activité planifiée de prise en charge. Elle peut servir à orienter le patient, organiser une activité, connaître une date, une heure, un lieu, un professionnel ou le statut d’un rendez-vous.
+Les principaux risques sont les suivants :
+Situation
+Risque métier
+Conséquence possible
+Exigence associée
+Mauvais patient sélectionné
+Consultation du mauvais agenda
+Mauvaise orientation ou exposition de données
+EF-02, EF-04, EF-16
+Rendez-vous absent
+L’utilisateur ignore une activité prévue
+Mauvaise organisation
+EF-06, EF-15
+Information incorrecte
+Décision fondée sur une donnée fausse
+Mauvaise orientation ou préparation
+EF-13
+Information périmée
+État affiché différent de la réalité
+Mauvaise décision
+À traiter aussi dans la partie architecture
+Information partielle
+Vue incomplète du rendez-vous
+Difficulté d’organisation
+EF-13, EF-14
+Consultation non légitime
+Accès indu à des données patient
+Atteinte à la confidentialité
+ENF-03
+
+Organisation / gouvernance
+Le prototype est considéré comme consommateur de l’information et non comme système de référence.
+Hypothèse : la production et la correction des rendez-vous sont assurées par un autre composant du SI ou par les procédures de l’organisation.
+Dans un système réel, il serait nécessaire de préciser :
+le système de référence ;
+le propriétaire de la donnée ;
+les acteurs autorisés à la modifier ;
+le processus de correction ;
+les responsabilités en cas d’incohérence.
+La première version du cahier des charges identifiait déjà cette distinction entre production, consultation et correction.
+Juridique / réglementaire
+Le prototype manipule des informations concernant des patients. Les précautions générales suivantes doivent être prises :
+limiter l’accès aux utilisateurs légitimes ;
+limiter les données manipulées au besoin du scénario ;
+ne pas exposer inutilement les données personnelles ;
+éviter de journaliser des données sensibles sans nécessité ;
+protéger les moyens d’accès ;
+ne pas publier de données patient ou de secrets d’accès dans le dépôt du projet ;
+utiliser les données uniquement dans le cadre autorisé du projet.
+Ces principes ne constituent pas une certification de conformité juridique ou réglementaire.
+
+12. Hypothèses et décisions à confirmer avec le groupe
+Décisions fonctionnelles recommandées
+Décision 1 — Utilisateur principal : retenir le terme « utilisateur habilité du SI de santé ».
+Décision 2 — Consultation uniquement : limiter le MVP à la consultation.
+Décision 3 — Vue principale : utiliser une vue en liste chronologique comme solution minimale ; le calendrier graphique reste optionnel.
+Décision 4 — Données manquantes : ne jamais inventer de valeur métier.
+Décision 5 — Données facultatives : leur absence ne doit pas empêcher la consultation.
+Décision 6 — Aucun rendez-vous : traiter cette situation comme un résultat métier normal.
+Décision 7 — Ambiguïté patient : obliger l’utilisateur à choisir explicitement.
+Points dépendant de la partie FHIR
+À confirmer avec le membre chargé des données :
+mécanisme réalisable d’identification du patient ;
+informations de rendez-vous réellement disponibles ;
+présence et stabilité d’un identifiant de rendez-vous ;
+représentation effective du professionnel, du service et du lieu ;
+disponibilité des rendez-vous passés et futurs ;
+informations indispensables pour la transformation ultérieure.
+Points dépendant de la partie architecture / intégration
+À confirmer avec le membre chargé de l’intégration :
+modalités d’accès aux données ;
+gestion technique des indisponibilités ;
+politique de journalisation ;
+mécanismes de sécurité ;
+temps de réponse acceptable ;
+gestion de la fraîcheur des informations ;
+mécanisme de transformation ultérieur vers le format cible.
+
+13. Contrat de passage aux parties 2 et 3
+La partie fonctionnelle impose aux spécifications techniques suivantes de respecter les règles métier suivantes :
+le patient doit pouvoir être identifié sans ambiguïté avant la consultation de ses rendez-vous ;
+chaque rendez-vous doit rester clairement rattaché au patient sélectionné ;
+les informations temporelles et le statut doivent être exploités lorsqu’ils sont disponibles ;
+professionnel, service et lieu doivent être considérés comme des informations conditionnelles ;
+une donnée absente ne doit jamais être inventée ;
+une donnée facultative absente ne doit pas bloquer toute la consultation ;
+« aucun rendez-vous » doit être distingué d’une indisponibilité technique ;
+les erreurs techniques doivent être traduites en comportement fonctionnel compréhensible ;
+les parties suivantes devront identifier quelles données sont nécessaires à la transformation vers le format cible sans modifier le sens métier défini ici.
+
+
+
+
+
+
+
+
