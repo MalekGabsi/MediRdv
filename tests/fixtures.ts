@@ -1,0 +1,11 @@
+// Synthetic, deliberately limited fixtures for automated tests. Never imported by src/.
+import type { Appointment, CapabilityStatement, FhirResource, Patient, Practitioner, Location } from 'fhir/r4';
+import type { SourceResource } from '../src/services/fhirApi';
+export const BASE = 'https://hapi.fhir.org/baseR4';
+export const patient: Patient = { resourceType: 'Patient', id: 'test-patient', identifier: [{ system: 'urn:test:patients', value: 'TEST-P-1' }], name: [{ family: 'Exemple', given: ['Alice'] }], birthDate: '1990-04', gender: 'female' };
+export const practitioner: Practitioner = { resourceType: 'Practitioner', id: 'test-practitioner', identifier: [{ system: 'urn:test:staff', value: 'TEST-DR-1' }], name: [{ family: 'Test', given: ['Camille'] }] };
+export const location: Location = { resourceType: 'Location', id: 'test-location', identifier: [{ system: 'urn:test:locations', value: 'ROOM-1' }], name: 'Salle de test' };
+export const appointment: Appointment = { resourceType: 'Appointment', id: 'test-appointment', identifier: [{ system: 'urn:test:appointments', value: 'TEST-A-1' }], status: 'booked', start: '2026-09-18T10:00:00+02:00', end: '2026-09-18T10:30:00+02:00', serviceType: [{ coding: [{ system: 'urn:test:services', code: 'LOCAL-CONSULT', display: 'Consultation de test' }] }], reasonCode: [{ text: 'Motif synthétique' }], participant: [{ actor: { reference: 'Patient/test-patient' }, status: 'accepted' }, { actor: { reference: 'Practitioner/test-practitioner' }, status: 'accepted' }, { actor: { reference: 'Location/test-location' }, status: 'accepted' }] };
+export const capability: CapabilityStatement = { resourceType: 'CapabilityStatement', status: 'active', date: '2026-01-01', kind: 'instance', fhirVersion: '4.0.1', format: ['json'], rest: [{ mode: 'server', resource: [{ type: 'Patient', searchParam: [{ name: 'name', type: 'string' }, { name: 'identifier', type: 'token' }] }, { type: 'Appointment', searchParam: [{ name: 'patient', type: 'reference' }], searchInclude: ['Appointment:actor'] }] }] };
+export const source = (resource: FhirResource): SourceResource => ({ resource, url: `${BASE}/${resource.resourceType}/${resource.id ?? ''}`, fetchedAt: '2026-09-15T10:00:00Z' });
+export const sources = [patient, appointment, practitioner, location].map(source);
